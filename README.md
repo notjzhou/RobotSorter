@@ -8,16 +8,16 @@ Go to the [Oracle Java Downloads](https://www.oracle.com/java/technologies/downl
 ### Building project
 Run these from the repository root:
 Linux
-./gradlew build
+```./gradlew build```
 Windows
-.\gradlew.bat build
+```.\gradlew.bat build```
 
 ### Running tests *THIS IS WHAT TO RUN TO CHECK THAT MY CODE WORKS*
 Run these from the repository root:
 Linux
-./gradlew test
+```./gradlew test```
 Windows
-.\gradlew.bat test
+```.\gradlew.bat test```
 
 ### *THIS IS WHERE TO LOOK AT MY CODE (sort method and the tests)*
 - `src/main/java/org/example/RobotSorter.java` - sort method
