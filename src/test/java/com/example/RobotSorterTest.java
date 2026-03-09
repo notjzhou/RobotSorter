@@ -49,4 +49,15 @@ public class RobotSorterTest {
         assertEquals(RobotSorter.STACK_TYPE.REJECTED.name(), robotSorter.sort(100000, 100000, 10000, 50000));
         assertEquals(RobotSorter.STACK_TYPE.REJECTED.name(), robotSorter.sort(0.00001, 10000000, 151, 21));
     }
+
+    @Test
+    public void testInvalidInput() {
+        assertThrows(IllegalArgumentException.class, () -> robotSorter.sort(10, 10, 10, 0));
+        assertThrows(IllegalArgumentException.class, () -> robotSorter.sort(10, 10, 10, -1));
+        assertThrows(IllegalArgumentException.class, () -> robotSorter.sort(-10, 10, 10, 10));
+        assertThrows(IllegalArgumentException.class, () -> robotSorter.sort(10, -10, 10, 10));
+        assertThrows(IllegalArgumentException.class, () -> robotSorter.sort(10, 10, -10, 10));
+        assertThrows(IllegalArgumentException.class, () -> robotSorter.sort(1000, 1000, 0, 10));
+        assertThrows(IllegalArgumentException.class, () -> robotSorter.sort(1000, 1000, 1000, 0));
+    }
 }

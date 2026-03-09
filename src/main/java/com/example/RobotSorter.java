@@ -14,8 +14,20 @@ public class RobotSorter {
     public RobotSorter() {
     }
 
+    /**
+     * Sort packages based on dimensions and mass. A "bulky" package is when volume (cm^3) > BULKY_VOLUME_THRESHOLD or
+     * any dimension (cm) is > BULKY_DIMENSION_THRESHOLD. A "heavy" package is when mass (kg) > HEAVY_THRESHOLD.
+     * @param width in centimeters
+     * @param height in centimeters
+     * @param length in centimeters
+     * @param mass in kilograms
+     * @return stack type based on the following criteria:
+     *  "STANDARD": neither bulky nor heavy
+     *  "SPECIAL": either bulky or heavy
+     *  "REJECTED": both bulky and heavy
+     */
     public String sort(double width, double height, double length, double mass) {
-
+        this.validateInput(width, height, length, mass);
         boolean isBulky = false;
         boolean isHeavy = false;
 
@@ -34,6 +46,12 @@ public class RobotSorter {
             return STACK_TYPE.SPECIAL.name();
         } else {
             return STACK_TYPE.STANDARD.name();
+        }
+    }
+
+    private void validateInput(double width, double height, double length, double mass) {
+        if (width <= 0 || height <= 0 || length <= 0 || mass <= 0) {
+            throw new IllegalArgumentException("All dimensions and mass must be > 0");
         }
     }
 }
